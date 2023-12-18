@@ -119,8 +119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e5c9d6f869e09498937c324361e04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 0.3
   hp: 10
+  wayPoint:
+  - {x: 10, y: 4, z: 0}
+  - {x: 7, y: 7, z: 0}
+  - {x: 0, y: -6, z: 0}
+  - {x: -17, y: 0, z: 0}
 --- !u!54 &-3818015653257778192
 Rigidbody:
   m_ObjectHideFlags: 0

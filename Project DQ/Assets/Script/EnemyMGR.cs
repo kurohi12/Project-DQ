@@ -71,11 +71,11 @@ public class EnemyMGR : MonoBehaviour
                         enemy.transform.position = pool[i].spawnPoint.position;
                         //에너미 활성화
                         enemy.SetActive(true);
-                        yield return new WaitForSeconds(pool[i].createTime);
                         //검색 중단
                         break;
                     }
                 }
+                yield return new WaitForSeconds(pool[i].createTime);
             }
         }
     }
