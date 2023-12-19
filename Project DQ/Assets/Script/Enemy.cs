@@ -13,8 +13,9 @@ public class Enemy : MonoBehaviour
     protected int hp = 10;
     [SerializeField]
     protected Vector3[] wayPoint = new Vector3[4];
+    [SerializeField]
+    protected GameObject item = null;
 
-    private Vector3 bPosition;
     protected float t;
 
     Vector3 dir = Vector3.zero;
@@ -55,7 +56,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         //플레이어 탄막
         if(collision.gameObject.tag == "Bullet_P")
@@ -66,8 +67,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Dead()
+    {
+        item.SetActive(true);
+    }
+
     protected IEnumerator BezierLining()
     {
+        Vector3 bPosition;
+        
         t += Time.deltaTime * speed;
 
         while (t < 1)
