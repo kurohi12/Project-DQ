@@ -1,11 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using System;
-using System.Linq;
 
-public class EnemyMGR : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     [Serializable]
     public struct EnemyPool
@@ -22,11 +20,13 @@ public class EnemyMGR : MonoBehaviour
     private EnemyPool[] pool;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        if (pool == null)
+            return;
 
         //오브젝트 풀링
-        for(int i=0;i<pool.Length; i++)
+        for (int i = 0; i < pool.Length; i++)
         {
             //오브젝트 풀을 에너미들을 담을 수 있는 크기로 설정
             pool[i].enemyObj = new GameObject[pool[i].poolSize];
@@ -41,11 +41,11 @@ public class EnemyMGR : MonoBehaviour
                 enemy.SetActive(false);
             }
         }
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -53,10 +53,11 @@ public class EnemyMGR : MonoBehaviour
         }
     }
 
-    IEnumerator Sumon()
+    private IEnumerator Sumon()
     {
         for (int i = 0; i < pool.Length; i++)
         {
+            WaitForSeconds wait = new WaitForSeconds(pool[i].createTime);
             //소환 타임이 되면 적 소환
             for (int n = 0; n < pool[i].spawnCnt; n++)
             {
@@ -75,7 +76,7 @@ public class EnemyMGR : MonoBehaviour
                         break;
                     }
                 }
-                yield return new WaitForSeconds(pool[i].createTime);
+                yield return wait;
             }
         }
     }

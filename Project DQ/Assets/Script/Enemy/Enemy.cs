@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private float speed = 3; //움직이는 속도
+    [SerializeField]
+    private int hp = 10; //체력
+    [SerializeField]
+    private Vector3[] wayPoint = new Vector3[4]; //베지어 곡선 좌표
+    [SerializeField]
+    private GameObject item = null; //드롭 아이템
 
-    [SerializeField]
-    protected float speed = 3;
-    [SerializeField]
-    protected int hp = 10;
-    [SerializeField]
-    protected Vector3[] wayPoint = new Vector3[4];
-    [SerializeField]
-    protected GameObject item = null;
-
-    protected float t;
+    private float t;
 
     Vector3 dir = Vector3.zero;
 
@@ -38,16 +38,21 @@ public class Enemy : MonoBehaviour
         set { dir = value; }
     }
 
+    private void OnEnable()
+    {
+        
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        StartCoroutine(BezierLining());
         if (HP <= 0)
         {
             gameObject.SetActive(false);
@@ -56,24 +61,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         //플레이어 탄막
-        if(collision.gameObject.tag == "Bullet_P")
+        if(collision.gameObject.CompareTag("PlayerBullet"))
         {
-            GameObject bullet = (GameObject)collision.gameObject;
-            
-            //아래에는 플레이어 공격력에 따라 체력 감소 코드 필요
+            hp--;
         }
     }
 
-    void Dead()
+    private void Dead()
     {
         item.SetActive(true);
     }
 
-    protected IEnumerator BezierLining()
+    private IEnumerator BezierLining()
     {
+        WaitForEndOfFrame frame = new WaitForEndOfFrame();
         Vector3 bPosition;
         
         t += Time.deltaTime * speed;
@@ -87,8 +91,13 @@ public class Enemy : MonoBehaviour
 
             transform.position = bPosition;
 
-            yield return new WaitForEndOfFrame();
+            yield return frame;
         }
+        t = 0;
+    }
+
+    private void OnDisable()
+    {
         t = 0;
     }
 }
