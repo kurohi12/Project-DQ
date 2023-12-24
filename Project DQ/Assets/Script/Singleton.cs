@@ -10,22 +10,34 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         get
         {
-            GameObject gameObj;
-            gameObj = GameObject.Find(typeof(T).Name);
+            // 인스턴스가 없으면 새로 생성
             if (instance == null)
             {
-                instance = gameObj.AddComponent<T>();
+                // 씬에서 찾아보고 없으면 새로 생성
+                instance = FindObjectOfType<T>();
+
+                // 씬에 없는 경우 새로 생성
+                if (instance == null)
+                {
+                    GameObject singletonObject = new GameObject(typeof(T).Name);
+                    instance = singletonObject.AddComponent<T>();
+                }
             }
-            else
-            {
-                instance = gameObj.GetComponent<T>();
-            }
+
             return instance;
         }
     }
 
-    public void Awake()
+    protected virtual void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this as T;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 }

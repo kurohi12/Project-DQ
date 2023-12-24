@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
@@ -18,6 +19,11 @@ public class EnemyManager : Singleton<EnemyManager>
 
     [SerializeField]
     private EnemyPool[] pool;
+
+    public int PoolSize
+    {
+        get { return pool.Length; }
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -42,6 +48,8 @@ public class EnemyManager : Singleton<EnemyManager>
             }
         }
 
+
+
     }
 
     // Update is called once per frame
@@ -53,7 +61,7 @@ public class EnemyManager : Singleton<EnemyManager>
         }
     }
 
-    private IEnumerator Sumon()
+    public IEnumerator Sumon()
     {
         for (int i = 0; i < pool.Length; i++)
         {
@@ -79,5 +87,32 @@ public class EnemyManager : Singleton<EnemyManager>
                 yield return wait;
             }
         }
+    }
+
+    public IEnumerator SelectSumon(int patternNumber)
+    {
+        WaitForSeconds wait = new WaitForSeconds(LevelManager.Instance.pattern[patternNumber].createTime);
+        int number = LevelManager.Instance.pattern[patternNumber].spawnNum;
+        for (int n = 0; n < LevelManager.Instance.pattern[patternNumber].spawnCount; n++)
+        {
+            
+            for (int i = 0; i < pool[number].poolSize; i++)
+            {
+                GameObject enemy = pool[number].enemyObj[i];
+
+                if (!enemy.GetComponent<Enemy>().Setting)
+                {
+                    enemy.GetComponent<Enemy>().Setting = true;
+                    enemy.GetComponent<Enemy>().WayPoint = LevelManager.Instance.pattern[patternNumber].wayPoint;
+                    enemy.transform.position = LevelManager.Instance.pattern[patternNumber].spawnPosition.position;
+                    enemy.GetComponent<Enemy>().Item = LevelManager.Instance.pattern[patternNumber].itemCode[n];
+                    enemy.SetActive(true);
+                    break;
+                }
+            }
+            yield return wait;
+        }
+        LevelManager.Instance.pattern[patternNumber].stop = true;
+
     }
 }

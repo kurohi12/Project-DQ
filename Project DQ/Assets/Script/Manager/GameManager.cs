@@ -23,14 +23,14 @@ public class GameManager : Singleton<GameManager>
 
 
     // Start is called before the first frame update
-    public void Start()
+    private void Start()
     {
         curTime = 0;
         playerPoint = 0;
     }
 
     // Update is called once per frame
-    public void Update()
+    private void Update()
     {
         curTime += Time.deltaTime;
     }

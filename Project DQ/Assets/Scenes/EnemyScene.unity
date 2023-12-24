@@ -619,7 +619,7 @@ Transform:
   m_GameObject: {fileID: 994417852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -650,7 +650,7 @@ Transform:
   m_GameObject: {fileID: 1099261029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8, z: 0}
+  m_LocalPosition: {x: 4, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -696,6 +696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218339281}
+  - component: {fileID: 1218339282}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -718,6 +719,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1218339282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218339280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7496345c50d77948ad77db43d0ecd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pattern:
+  - spawnPosition: {fileID: 1509978238}
+    spawnTime: 2
+    createTime: 0.5
+    spawnCount: 4
+    itemCode:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoint:
+    - {x: 10, y: 4, z: 0}
+    - {x: -6, y: 10, z: 0}
+    - {x: 4, y: -8, z: 0}
+    - {x: -5, y: 8, z: 0}
+    stop: 0
+    spawnNum: 0
+  - spawnPosition: {fileID: 1509978238}
+    spawnTime: 3
+    createTime: 0.5
+    spawnCount: 4
+    itemCode:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoint:
+    - {x: 10, y: 2, z: 0}
+    - {x: -6, y: 5, z: 0}
+    - {x: 4, y: -13, z: 0}
+    - {x: -5, y: 10, z: 0}
+    stop: 0
+    spawnNum: 0
 --- !u!1 &1284791111
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool:
-  - poolSize: 3
+  - poolSize: 10
     enemyObj: []
     spawnPoint: {fileID: 1509978238}
     prefab: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
@@ -847,7 +893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1377648338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1410,7 @@ Transform:
   m_GameObject: {fileID: 2001645454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 7, z: 0}
+  m_LocalPosition: {x: -6, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

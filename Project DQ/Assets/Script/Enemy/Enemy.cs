@@ -15,10 +15,22 @@ public class Enemy : MonoBehaviour
     private Vector3[] wayPoint = new Vector3[4]; //베지어 곡선 좌표
     [SerializeField]
     private GameObject item = null; //드롭 아이템
+    [SerializeField]
+    private bool setting=false;
 
     private float t;
 
     Vector3 dir = Vector3.zero;
+
+    public bool Setting
+    {
+        get { return setting; }
+        set { setting = value; }
+    }
+
+    public Vector3[] WayPoint { get { return (Vector3[])wayPoint.Clone(); } set { wayPoint = (Vector3[])value.Clone(); } }
+
+    public GameObject Item { get { return (GameObject)item; } set { item = (GameObject)value; } }
 
     public float Speed
     {
@@ -40,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        t = 0;
     }
 
     // Start is called before the first frame update
@@ -52,7 +64,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        StartCoroutine(BezierLining());
+        Vector3 bPosition;
+
+        t += Time.deltaTime * speed;
+
+        bPosition = Mathf.Pow(1 - t, 3) * wayPoint[0]
+                   + 3 * t * Mathf.Pow(1 - t, 2) * wayPoint[1]
+                   + 3 * t * (1 - t) * wayPoint[2]
+                   + Mathf.Pow(t, 3) * wayPoint[3];
+
+        transform.position = bPosition;
+        //t = 0;
         if (HP <= 0)
         {
             gameObject.SetActive(false);
@@ -70,34 +92,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Dead()
-    {
-        item.SetActive(true);
-    }
-
-    private IEnumerator BezierLining()
-    {
-        WaitForEndOfFrame frame = new WaitForEndOfFrame();
-        Vector3 bPosition;
-        
-        t += Time.deltaTime * speed;
-
-        while (t < 1)
-        {
-            bPosition = Mathf.Pow(1 - t, 3) * wayPoint[0]
-                    + 3 * t * Mathf.Pow(1 - t, 2) * wayPoint[1]
-                    + 3 * t * (1 - t) * wayPoint[2]
-                    + Mathf.Pow(t, 3) * wayPoint[3];
-
-            transform.position = bPosition;
-
-            yield return frame;
-        }
-        t = 0;
-    }
-
     private void OnDisable()
     {
-        t = 0;
+        item.SetActive(true);
+        setting = false;
     }
 }
