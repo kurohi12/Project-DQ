@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     private float t;
 
-    Vector3 dir = Vector3.zero;
+    private Vector3 bPosition;
 
     public bool Setting
     {
@@ -44,12 +44,6 @@ public class Enemy : MonoBehaviour
         set { hp = value; }
     }
 
-    public Vector3 Direction
-    {
-        get { return dir; }
-        set { dir = value; }
-    }
-
     private void OnEnable()
     {
         t = 0;
@@ -64,8 +58,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Vector3 bPosition;
-
         t += Time.deltaTime * speed;
 
         bPosition = Mathf.Pow(1 - t, 3) * wayPoint[0]
@@ -79,7 +71,7 @@ public class Enemy : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            //아래에 플레이어 점수 증가 코드 필요
+            GameManager.Instance.Point += 10;
         }
     }
 

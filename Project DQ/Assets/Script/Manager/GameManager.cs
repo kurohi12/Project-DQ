@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private float curTime;
     [SerializeField]
-    private float playerPoint;
+    private int playerPoint;
 
     public float GameTime
     {
@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
         set { curTime = value; }
     }
 
-    public float Point
+    public int Point
     {
         get { return playerPoint; }
         set { playerPoint = value; }

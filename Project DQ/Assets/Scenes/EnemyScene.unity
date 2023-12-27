@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 801086660}
   - component: {fileID: 801086659}
   - component: {fileID: 801086658}
+  - component: {fileID: 801086662}
   m_Layer: 0
   m_Name: DestroyLine(Top)
   m_TagString: Untagged
@@ -471,6 +472,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &801086662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801086657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6995a70ae7177438b34a7ececda651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &846806092
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,36 +747,36 @@ MonoBehaviour:
   pattern:
   - spawnPosition: {fileID: 1509978238}
     spawnTime: 2
-    createTime: 0.5
+    createDelay: 0.5
     spawnCount: 4
-    itemCode:
+    item:
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
-    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
-    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 2291048094071566593, guid: d015ffc73bae8dc43828cadec947df5b, type: 3}
+    - {fileID: 2291048094071566593, guid: d015ffc73bae8dc43828cadec947df5b, type: 3}
     wayPoint:
-    - {x: 10, y: 4, z: 0}
+    - {x: 10, y: -4, z: 0}
     - {x: -6, y: 10, z: 0}
     - {x: 4, y: -8, z: 0}
     - {x: -5, y: 8, z: 0}
     stop: 0
-    spawnNum: 0
+    poolNum: 0
   - spawnPosition: {fileID: 1509978238}
     spawnTime: 3
-    createTime: 0.5
+    createDelay: 1
     spawnCount: 4
-    itemCode:
+    item:
+    - {fileID: 2291048094071566593, guid: d015ffc73bae8dc43828cadec947df5b, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
-    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
-    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 2291048094071566593, guid: d015ffc73bae8dc43828cadec947df5b, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
     wayPoint:
     - {x: 10, y: 2, z: 0}
     - {x: -6, y: 5, z: 0}
-    - {x: 4, y: -13, z: 0}
-    - {x: -5, y: 10, z: 0}
+    - {x: 4, y: -5, z: 0}
+    - {x: -9, y: 3, z: 0}
     stop: 0
-    spawnNum: 0
+    poolNum: 0
 --- !u!1 &1284791111
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,10 +886,7 @@ MonoBehaviour:
   pool:
   - poolSize: 10
     enemyObj: []
-    spawnPoint: {fileID: 1509978238}
     prefab: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
-    createTime: 0.5
-    spawnCnt: 3
 --- !u!1 &1377648337
 GameObject:
   m_ObjectHideFlags: 0
