@@ -17,6 +17,11 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField]
     private EnemyPool[] pool;
 
+    private LevelManager levelManager;
+
+    private GameObject enemy;
+    private Enemy enemyComponent;
+
     public int PoolSize
     {
         get { return pool.Length; }
@@ -28,6 +33,8 @@ public class EnemyManager : Singleton<EnemyManager>
         if (pool == null)
             return;
 
+        levelManager = LevelManager.Instance;
+
         //오브젝트 풀링
         for (int i = 0; i < pool.Length; i++)
         {
@@ -37,14 +44,14 @@ public class EnemyManager : Singleton<EnemyManager>
             for (int j = 0; j < pool[i].poolSize; j++)
             {
                 //에너미 생성
-                GameObject enemy = Instantiate(pool[i].prefab);
+                enemy = Instantiate(pool[i].prefab);
                 //에너미를 오브젝트 풀에 입력
                 pool[i].enemyObj[j] = enemy;
                 //비활성화
                 enemy.SetActive(false);
             }
         }
-
+        
     }
 
     // Update is called once per frame
@@ -56,27 +63,27 @@ public class EnemyManager : Singleton<EnemyManager>
     //에너미 생성 루틴
     public IEnumerator Sumon(int patternNumber)
     {
-        WaitForSeconds wait = new WaitForSeconds(LevelManager.Instance.pattern[patternNumber].createDelay);
-        int number = LevelManager.Instance.pattern[patternNumber].poolNum;
-        for (int n = 0; n < LevelManager.Instance.pattern[patternNumber].spawnCount; n++)
+        WaitForSeconds wait = new WaitForSeconds(levelManager.pattern[patternNumber].createDelay);
+        int number = levelManager.pattern[patternNumber].poolNum;
+        for (int n = 0; n < levelManager.pattern[patternNumber].spawnCount; n++)
         {
             
             for (int i = 0; i < pool[number].poolSize; i++)
             {
-                GameObject enemy = pool[number].enemyObj[i];
-
-                if (!enemy.GetComponent<Enemy>().Setting)
+                enemy = pool[number].enemyObj[i];
+                enemyComponent = enemy.GetComponent<Enemy>();
+                if (!enemyComponent.Setting)
                 {
-                    enemy.GetComponent<Enemy>().Setting = true;
-                    enemy.GetComponent<Enemy>().WayPoint = LevelManager.Instance.pattern[patternNumber].wayPoint;
-                    enemy.transform.position = LevelManager.Instance.pattern[patternNumber].spawnPosition.position;
-                    enemy.GetComponent<Enemy>().Item = LevelManager.Instance.pattern[patternNumber].item[n];
+                    enemyComponent.Setting = true;
+                    enemyComponent.WayPoint = levelManager.pattern[patternNumber].wayPoint;
+                    enemy.transform.position = levelManager.pattern[patternNumber].spawnPosition.position;
+                    enemyComponent.Item = levelManager.pattern[patternNumber].item[n];
                     enemy.SetActive(true);
                     break;
                 }
             }
             yield return wait;
         }
-        LevelManager.Instance.pattern[patternNumber].stop = true;
+        levelManager.pattern[patternNumber].stop = true;
     }
 }

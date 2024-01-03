@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
 
     private Vector3 bPosition;
 
+    private GameManager gameManager;
+
     public bool Setting
     {
         get { return setting; }
@@ -52,7 +54,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -70,8 +72,8 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             gameObject.SetActive(false);
-
-            GameManager.Instance.Point += 10;
+            item.SetActive(true);
+            gameManager.Point += 10;
         }
     }
 
@@ -86,7 +88,6 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
-        item.SetActive(true);
         setting = false;
     }
 }

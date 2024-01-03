@@ -27,31 +27,43 @@ public class LevelManager : Singleton<LevelManager>
     private int nowLevel = 0;
     private int returnlevel = 0;
 
+    private EnemyManager enemyManager;
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+        enemyManager = EnemyManager.Instance;
+        gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        nowTime = GameManager.Instance.GameTime;
+
+        //패턴 루틴 종료
+        if (pattern[returnlevel].stop)
+        {
+            StopCoroutine(enemyManager.Sumon(returnlevel));
+        }
+
+        nowTime = gameManager.GameTime;
+        
+        if (pattern.Length<=nowLevel)
+        {
+            return;
+        }
 
         //특정 시간에 패턴 루틴 시작
         if (pattern[nowLevel].spawnTime <= nowTime)
         {
             returnlevel = nowLevel;
             pattern[nowLevel].stop = false;
-            StartCoroutine(EnemyManager.Instance.Sumon(nowLevel));
+            StartCoroutine(enemyManager.Sumon(nowLevel));
             nowLevel++;
         }
 
-        //패턴 루틴 종료
-        if (pattern[returnlevel].stop)
-        {
-            StopCoroutine(EnemyManager.Instance.Sumon(returnlevel));
-        }
+        
     }
 
 }

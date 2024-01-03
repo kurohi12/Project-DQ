@@ -8,6 +8,8 @@ public class GameManager : Singleton<GameManager>
     private float curTime;
     [SerializeField]
     private int playerPoint;
+    [SerializeField]
+    private Transform playerTransform;
 
     public float GameTime
     {
@@ -33,5 +35,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         curTime += Time.deltaTime;
+
+        
     }
 }
