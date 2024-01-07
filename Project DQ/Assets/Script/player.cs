@@ -5,21 +5,42 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
 
-    public float maxShotDelay;//실제 딜레이
-    public float curShotDelay;//한번 발사후 다음 발사까지의 딜레이
+    public float maxShotDelay;// 실제 딜레이
+    public float curShotDelay;// 한번 발사후 다음 발사까지의 딜레이
     public float speed;
     public int power;
     public int life;
+    
     Vector3 cPos = Vector3.zero;
 
     public GameObject[] PlayerBullet = new GameObject[4];
+    public GameObject ScoreProtector; // 프로텍터를 저장할 변수
+    
+    // [스코어프로텍트함수]
+    public bool shiftCheck = false;
+    private bool prevShiftState = false;
 
     private void Update()
     {
         Move();
         Fire();
         Reload();
-        Protector();
+        bool currentShiftState = Input.GetButton("leftShift");
+        if (currentShiftState != prevShiftState) // Shift 상태가 변경됐는지 확인
+        {
+            if (currentShiftState) // Shift 눌렸을 때
+            {
+                shiftCheck = true;
+            }
+            else // Shift 떼어졌을 때
+            {
+                shiftCheck = false;
+            }
+
+            Protector(); // 상태에 따라 처리
+        }
+        prevShiftState = currentShiftState; // 현재 상태를 이전 상태로 갱신
+
         CameraIn();
     }
 
@@ -37,28 +58,28 @@ public class player : MonoBehaviour
 
     private void Protector()
     {
-        if (Input.GetButton("leftShift"))
+        if (shiftCheck)
         {
-            transform.Find("Score Protector").gameObject.SetActive(true);
+            ScoreProtector.SetActive(true);
             speed = 1;
         }
         else
         {
-            transform.Find("Score Protector").gameObject.SetActive(false);
+            ScoreProtector.SetActive(false);
             speed = 3;
-        }           
+        }
     }
 
     private void Fire()
     {
-        if (curShotDelay < maxShotDelay)//현재 샷 딜레이가 본인이 설정한 맥스 샷 딜레이를 넘지 않았다면 아직 장전이 안된것이기에 반환시킴
+        if (curShotDelay < maxShotDelay)// 현재 샷 딜레이가 본인이 설정한 맥스 샷 딜레이를 넘지 않았다면 아직 장전이 안된것이기에 반환시킴
             return;
         if (Input.GetButton("Fire1"))
         {
-            //Instantiate = 매개변수 오브젝트를 생성하는 함수
-            //(프리펩(original),생성 될 위치(position),오브젝트의 방향(rotation))
+            // Instantiate = 매개변수 오브젝트를 생성하는 함수
+            // (프리펩(original),생성 될 위치(position),오브젝트의 방향(rotation))
             BulletManager.Instance.BulletOn(power);
-            //GameObject bullet = Instantiate(PlayerBullet[i], transform.position, transform.rotation);
+            // GameObject bullet = Instantiate(PlayerBullet[i], transform.position, transform.rotation);
             curShotDelay = 0;
         }
     }
@@ -71,10 +92,10 @@ public class player : MonoBehaviour
 
     private void Reload()
     {
-        curShotDelay += Time.deltaTime;//딜레이 변수에 Time.deltaTime을 계속 더해 시간 계산
+        curShotDelay += Time.deltaTime;// 딜레이 변수에 Time.deltaTime을 계속 더해 시간 계산
     }
 
-    //카메라 밖으로 못 나가게 만듦
+    // 카메라 밖으로 못 나가게 만듦
     private void CameraIn()
     {
         cPos = Camera.main.WorldToViewportPoint(transform.position);

@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422339064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba548feed2a641b45bac2c78d9aab04c, type: 3}
+  m_Script: {fileID: 11500000, guid: dce4c2ac518023745aa21c42f9d82667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxShotDelay: 2
@@ -1160,6 +1160,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  ScoreProtector: {fileID: 138514724}
+  shiftCheck: 0
 --- !u!65 &1422339066
 BoxCollider:
   m_ObjectHideFlags: 0
