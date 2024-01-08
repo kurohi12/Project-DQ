@@ -748,7 +748,7 @@ MonoBehaviour:
   - spawnPosition: {fileID: 1509978238}
     spawnTime: 2
     createDelay: 0.5
-    spawnCount: 4
+    spawnCount: 10
     item:
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
@@ -764,7 +764,7 @@ MonoBehaviour:
   - spawnPosition: {fileID: 1509978238}
     spawnTime: 3
     createDelay: 1
-    spawnCount: 4
+    spawnCount: 10
     item:
     - {fileID: 2291048094071566593, guid: d015ffc73bae8dc43828cadec947df5b, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
@@ -1282,7 +1282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1978712689}
-  - component: {fileID: 1978712688}
+  - component: {fileID: 1978712690}
   m_Layer: 0
   m_Name: PoolManager
   m_TagString: Untagged
@@ -1290,20 +1290,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1978712688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978712687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fad83686bb6f9f44b943b39b8908abd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _poolDataList:
-  - {fileID: 7361874743341324853, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
 --- !u!4 &1978712689
 Transform:
   m_ObjectHideFlags: 0
@@ -1319,6 +1305,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1978712690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978712687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f165782b4916b41a271b6f38273eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolDataList:
+  - {fileID: 7015289956337213386, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
 --- !u!1 &1986365928
 GameObject:
   m_ObjectHideFlags: 0

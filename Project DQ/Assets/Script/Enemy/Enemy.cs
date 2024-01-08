@@ -22,13 +22,10 @@ public class Enemy : MonoBehaviour
 
     private Vector3 bPosition;
 
-<<<<<<< Updated upstream
-=======
     private GameManager gameManager;
 
     private WaitForEndOfFrame moveFrame = new WaitForEndOfFrame();
 
->>>>>>> Stashed changes
     public bool Setting
     {
         get { return setting; }

@@ -46,12 +46,12 @@ public class PoolManager : Singleton<PoolManager>
         if (!testModeOn) return;
         Stack<GameObject> pool = _poolDict[key];
 
-        int cloneCount = _cloneDict.Values.Count(stack => stack.Contains(_poolDict[key].First()));
+        //int cloneCount = _cloneDict.Values.Count(stack => stack.Contains(_poolDict[key].Last()));
         int PoolCount = pool.Count;
         int maxCount = _dataDict[key].maxObjectCount;
-
+        /*[{cloneCount - PoolCount}] Used,*/
         _t_ContainerDict[key].name
-            = $"Pool <{key}> - [{cloneCount - PoolCount}] Used, [{PoolCount}] Available, [{maxCount}] Max";
+            = $"Pool <{key}> - [{PoolCount}] Available, [{maxCount}] Max";
     }
 
     private void Init()

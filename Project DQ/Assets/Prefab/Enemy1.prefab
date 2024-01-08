@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 749345776979279049}
   - component: {fileID: -3818015653257778192}
   - component: {fileID: -6583369550773924846}
-  - component: {fileID: 7361874743341324853}
+  - component: {fileID: 7015289956337213386}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -156,7 +156,7 @@ MonoBehaviour:
   - {x: -12, y: 0, z: 0}
   item: {fileID: 0}
   setting: 0
---- !u!114 &7361874743341324853
+--- !u!114 &7015289956337213386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,10 +165,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4571690454786834563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ba13a1da85e484996d1d430d080a27, type: 3}
+  m_Script: {fileID: 11500000, guid: b7bb27f772aad7c45af198c0d09a2140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: Enemy1
   prefab: {fileID: 4571690454786834563}
-  initialObjectCount: 10
+  objectCount: 10
   maxObjectCount: 50
