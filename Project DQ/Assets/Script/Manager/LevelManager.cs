@@ -16,7 +16,7 @@ public class LevelManager : Singleton<LevelManager>
         public GameObject[] item; //아이템 (소환 개수에 맞춰야함)
         public Vector3[] wayPoint; //베지어 곡선 좌표 (4개)
         public bool stop; //코루틴 멈춤
-        public int poolNum; //풀 넘버
+        public GameObject spawnObject; //소환할 오브젝트
     }
 
     [SerializeField]

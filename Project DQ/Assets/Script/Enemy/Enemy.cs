@@ -22,6 +22,13 @@ public class Enemy : MonoBehaviour
 
     private Vector3 bPosition;
 
+<<<<<<< Updated upstream
+=======
+    private GameManager gameManager;
+
+    private WaitForEndOfFrame moveFrame = new WaitForEndOfFrame();
+
+>>>>>>> Stashed changes
     public bool Setting
     {
         get { return setting; }
@@ -44,13 +51,8 @@ public class Enemy : MonoBehaviour
         set { hp = value; }
     }
 
-    private void OnEnable()
-    {
-        t = 0;
-    }
-
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         
     }
@@ -58,15 +60,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        t += Time.deltaTime * speed;
-
-        bPosition = Mathf.Pow(1 - t, 3) * wayPoint[0]
-                   + 3 * t * Mathf.Pow(1 - t, 2) * wayPoint[1]
-                   + 3 * t * (1 - t) * wayPoint[2]
-                   + Mathf.Pow(t, 3) * wayPoint[3];
-
-        transform.position = bPosition;
-        //t = 0;
+        StartCoroutine(Move());
         if (HP <= 0)
         {
             gameObject.SetActive(false);
@@ -88,5 +82,25 @@ public class Enemy : MonoBehaviour
     {
         item.SetActive(true);
         setting = false;
+        StopCoroutine(Move());
+    }
+
+    private IEnumerator Move()
+    {
+        t += Time.deltaTime * speed;
+
+        while (t < 1)
+        {
+            bPosition = Mathf.Pow(1 - t, 3) * wayPoint[0]
+                  + 3 * t * Mathf.Pow(1 - t, 2) * wayPoint[1]
+                  + 3 * t * (1 - t) * wayPoint[2]
+                  + Mathf.Pow(t, 3) * wayPoint[3];
+
+            transform.position = bPosition;
+
+            yield return moveFrame;
+        }
+       
+        t = 0;
     }
 }

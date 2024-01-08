@@ -6,28 +6,40 @@ using UnityEngine.UI;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    [Serializable]
+    /*[Serializable]
     public struct EnemyPool
     {
         public int poolSize; //오브젝트 풀 크기
         public GameObject[] enemyObj; //저장된 오브젝트
         public GameObject prefab; //프리팹
-    }
+    }*/
 
-    [SerializeField]
-    private EnemyPool[] pool;
+   /* [SerializeField]
+    private EnemyPool[] pool;*/
 
+<<<<<<< Updated upstream
     public int PoolSize
+=======
+    private LevelManager levelManager;
+    private Enemy enemyComponent;
+
+  /*  public int PoolSize
+>>>>>>> Stashed changes
     {
         get { return pool.Length; }
-    }
+    }*/
 
     // Start is called before the first frame update
     private void Start()
     {
-        if (pool == null)
-            return;
+        /*if (pool == null)
+            return;*/
 
+<<<<<<< Updated upstream
+=======
+        levelManager = LevelManager.Instance;
+/*
+>>>>>>> Stashed changes
         //오브젝트 풀링
         for (int i = 0; i < pool.Length; i++)
         {
@@ -43,8 +55,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 //비활성화
                 enemy.SetActive(false);
             }
+<<<<<<< Updated upstream
         }
 
+=======
+        }*/
+        
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -56,16 +73,32 @@ public class EnemyManager : Singleton<EnemyManager>
     //에너미 생성 루틴
     public IEnumerator Sumon(int patternNumber)
     {
+<<<<<<< Updated upstream
         WaitForSeconds wait = new WaitForSeconds(LevelManager.Instance.pattern[patternNumber].createDelay);
         int number = LevelManager.Instance.pattern[patternNumber].poolNum;
         for (int n = 0; n < LevelManager.Instance.pattern[patternNumber].spawnCount; n++)
+=======
+        WaitForSeconds wait = new WaitForSeconds(levelManager.pattern[patternNumber].createDelay);
+        GameObject go = levelManager.pattern[patternNumber].spawnObject;
+        for (int n = 0; n < levelManager.pattern[patternNumber].spawnCount; n++)
+>>>>>>> Stashed changes
         {
-            
-            for (int i = 0; i < pool[number].poolSize; i++)
+            GameObject enemy = PoolManager.Instance.Spawn(go.gameObject.name);
+            enemyComponent = enemy.GetComponent<Enemy>();
+            enemyComponent.Setting = true;
+            enemyComponent.WayPoint = levelManager.pattern[patternNumber].wayPoint;
+            enemy.transform.position = levelManager.pattern[patternNumber].spawnPosition.position;
+            enemyComponent.Item = levelManager.pattern[patternNumber].item[n];
+            /*for (int i = 0; i < pool[number].poolSize; i++)
             {
                 GameObject enemy = pool[number].enemyObj[i];
+<<<<<<< Updated upstream
 
                 if (!enemy.GetComponent<Enemy>().Setting)
+=======
+                enemyComponent = enemy.GetComponent<Enemy>();
+                if (!enemyComponent.Setting)
+>>>>>>> Stashed changes
                 {
                     enemy.GetComponent<Enemy>().Setting = true;
                     enemy.GetComponent<Enemy>().WayPoint = LevelManager.Instance.pattern[patternNumber].wayPoint;
@@ -74,7 +107,7 @@ public class EnemyManager : Singleton<EnemyManager>
                     enemy.SetActive(true);
                     break;
                 }
-            }
+            }*/
             yield return wait;
         }
         LevelManager.Instance.pattern[patternNumber].stop = true;
