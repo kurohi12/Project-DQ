@@ -6,26 +6,13 @@ using UnityEngine.UI;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    /*[Serializable]
-    public struct EnemyPool
-    {
-        public int poolSize; //오브젝트 풀 크기
-        public GameObject[] enemyObj; //저장된 오브젝트
-        public GameObject prefab; //프리팹
-    }*/
-
-   /* [SerializeField]
-    private EnemyPool[] pool;*/
-
     private LevelManager levelManager;
     private Enemy enemyComponent;
 
     // Start is called before the first frame update
     private void Start()
     {
-        
         levelManager = LevelManager.Instance;
-       
     }
 
     // Update is called once per frame

@@ -748,7 +748,7 @@ MonoBehaviour:
   - spawnPosition: {fileID: 1509978238}
     spawnTime: 2
     createDelay: 0.5
-    spawnCount: 10
+    spawnCount: 4
     item:
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
@@ -764,7 +764,7 @@ MonoBehaviour:
   - spawnPosition: {fileID: 1509978238}
     spawnTime: 3
     createDelay: 1
-    spawnCount: 10
+    spawnCount: 5
     item:
     - {fileID: 2291048094071566593, guid: d015ffc73bae8dc43828cadec947df5b, type: 3}
     - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
@@ -776,7 +776,7 @@ MonoBehaviour:
     - {x: 4, y: -5, z: 0}
     - {x: -9, y: 3, z: 0}
     stop: 0
-    spawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+    spawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
 --- !u!1 &1284791111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _poolDataList:
   - {fileID: 7015289956337213386, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - {fileID: 7015289956337213386, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
 --- !u!1 &1986365928
 GameObject:
   m_ObjectHideFlags: 0

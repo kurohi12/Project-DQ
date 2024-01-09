@@ -2,6 +2,7 @@
 #define TEST_ON
 #endif
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 using KeyType = System.String;
+
+//복사된 오브젝트 정보
+class CloneScheduleInfo
+{
+    public readonly GameObject clone;
+    public readonly Stack<GameObject> pool;
+    public CloneScheduleInfo(GameObject clone, Stack<GameObject> pool)
+    {
+        this.clone = clone;
+        this.pool = pool;
+    }
+}
 
 public class PoolManager : Singleton<PoolManager>
 {
@@ -18,12 +31,12 @@ public class PoolManager : Singleton<PoolManager>
     private Dictionary<KeyType, GameObject> _prefabDict;   // 오브젝트 원본
     private Dictionary<KeyType, PoolData> _dataDict; // 풀 정보
     private Dictionary<KeyType, Stack<GameObject>> _poolDict;         // 오브젝트 풀
-    private Dictionary<GameObject, Stack<GameObject>> _cloneDict; // 복제된 오브젝트
+    private Dictionary<GameObject, CloneScheduleInfo> _cloneDict;  // 복제된 오브젝트
 
-    private Dictionary<KeyType, GameObject> _t_ContainerDict;
-    private Dictionary<Stack<GameObject>, KeyType> _t_poolKeyDict;
+    private Dictionary<KeyType, GameObject> _t_ContainerDict; //하이어라키에서 보여질 컨테이너
+    private Dictionary<Stack<GameObject>, KeyType> _t_poolKeyDict; //하이어라키에서 보여질 풀
 
-    private bool testModeOn = true;
+    private bool testModeOn = true; 
 
     private void Start()
     {
@@ -46,12 +59,11 @@ public class PoolManager : Singleton<PoolManager>
         if (!testModeOn) return;
         Stack<GameObject> pool = _poolDict[key];
 
-        //int cloneCount = _cloneDict.Values.Count(stack => stack.Contains(_poolDict[key].Last()));
+        int cloneCount = _cloneDict.Values.Where(v => v.pool == pool).Count();
         int PoolCount = pool.Count;
         int maxCount = _dataDict[key].maxObjectCount;
-        /*[{cloneCount - PoolCount}] Used,*/
         _t_ContainerDict[key].name
-            = $"Pool <{key}> - [{PoolCount}] Available, [{maxCount}] Max";
+               = $"Pool <{key}> - [{cloneCount - PoolCount}] Used, [{PoolCount}] InPool, [{maxCount}] Max";
     }
 
     private void Init()
@@ -69,7 +81,7 @@ public class PoolManager : Singleton<PoolManager>
         _prefabDict = new Dictionary<KeyType, GameObject>(len);
         _dataDict = new Dictionary<KeyType, PoolData>(len);
         _poolDict = new Dictionary<KeyType, Stack<GameObject>>(len);
-        _cloneDict = new Dictionary<GameObject, Stack<GameObject>>(len * PoolData.COUNT);
+        _cloneDict = new Dictionary<GameObject, CloneScheduleInfo>(len * PoolData.COUNT);
 
         // Data로부터 새로운 Pool 오브젝트 정보 생성
         foreach (var data in _poolDataList)
@@ -78,7 +90,7 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
-    /// <summary> Pool 데이터로부터 새로운 Pool 오브젝트 정보 등록 </summary>
+    //풀 데이터 정보 등록
     private void RegisterInternal(PoolData data)
     {
         // 중복 키는 등록 불가능
@@ -87,7 +99,7 @@ public class PoolManager : Singleton<PoolManager>
             return;
         }
 
-        // 샘플 게임오브젝트 생성, PoolObject 컴포넌트 존재 확인
+        // 프리팹 게임오브젝트 생성, PoolObject 컴포넌트 존재 확인
         GameObject sample = Instantiate(data.prefab);
         sample.name = data.prefab.name;
         sample.SetActive(false);
@@ -100,7 +112,7 @@ public class PoolManager : Singleton<PoolManager>
             clone.SetActive(false);
             pool.Push(clone);
 
-            _cloneDict.Add(clone, pool); // Clone-Stack 캐싱
+            _cloneDict.Add(clone, new CloneScheduleInfo(clone, pool)); // 복제 데이터 캐싱
         }
 
         // 딕셔너리에 추가
@@ -110,8 +122,8 @@ public class PoolManager : Singleton<PoolManager>
 
         TestModeOnly(() =>
         {
-            // 샘플을 공통 게임오브젝트의 자식으로 묶기
-            string posName = "ObjectPool Samples";
+            // 프리팹을 공통 게임오브젝트의 자식으로 묶기
+            string posName = "ObjectPool Prefab";
             GameObject parentOfSamples = GameObject.Find(posName);
             if (parentOfSamples == null)
                 parentOfSamples = new GameObject(posName);
@@ -135,7 +147,7 @@ public class PoolManager : Singleton<PoolManager>
         });
     }
 
-    private GameObject CloneFromSample(KeyType key)
+    private GameObject CloneFromPrefab(KeyType key)
     {
         if (!_prefabDict.TryGetValue(key, out GameObject sample)) return null;
 
@@ -152,16 +164,16 @@ public class PoolManager : Singleton<PoolManager>
 
         GameObject go;
 
-        // 풀에 재고가 있는 경우 : 꺼내오기
+        // 풀에 재고가 있는 경우 꺼내오기
         if (pool.Count > 0)
         {
             go = pool.Pop();
         }
-        // 재고가 없는 경우 샘플로부터 복제
+        // 재고가 없는 경우 프리팹 복제
         else
         {
-            go = CloneFromSample(key);
-            _cloneDict.Add(go, pool); // Clone-Stack 캐싱
+            go = CloneFromPrefab(key);
+            _cloneDict.Add(go, new CloneScheduleInfo(go, pool)); // 복제 데이터 캐싱
         }
 
         go.SetActive(true);
@@ -176,28 +188,37 @@ public class PoolManager : Singleton<PoolManager>
         return go;
     }
 
+    //풀에 오브젝트 넣는 처리
+    private void DespawnInternal(CloneScheduleInfo data)
+    {
+        // 풀에 집어넣기
+        data.clone.SetActive(false);
+        data.pool.Push(data.clone);
+
+        TestModeOnly(() =>
+        {
+            KeyType key = _t_poolKeyDict[data.pool];
+
+            // 컨테이너 자식으로 넣기
+            data.clone.transform.SetParent(_t_ContainerDict[key].transform);
+
+            // 컨테이너 이름 변경
+            Test_ChangeContainerName(key);
+        });
+    }
+
     public void Despawn(GameObject go)
     {
-        // 캐싱된 게임오브젝트가 아닌 경우 파괴
-        if (!_cloneDict.TryGetValue(go, out var pool))
+        if (go == null) return;
+        if (go.activeSelf == false) return;
+
+        // 복제된 게임오브젝트가 아닌 경우 삭제
+        if (!_cloneDict.TryGetValue(go, out var cloneData))
         {
             Destroy(go);
             return;
         }
 
-        // 집어넣기
-        go.SetActive(false);
-        pool.Push(go);
-
-        TestModeOnly(() =>
-        {
-            KeyType key = _t_poolKeyDict[pool];
-
-            // 컨테이너 자식으로 넣기
-            go.transform.SetParent(_t_ContainerDict[key].transform);
-
-            // 컨테이너 이름 변경
-            Test_ChangeContainerName(key);
-        });
+        DespawnInternal(cloneData);
     }
 }
