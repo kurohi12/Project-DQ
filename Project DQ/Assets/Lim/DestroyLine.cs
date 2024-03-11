@@ -16,7 +16,7 @@ public class DestroyLine : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         PoolManager.Instance.Despawn(collision.gameObject);
         //collision.gameObject.SetActive(false);
