@@ -15,7 +15,7 @@ public class CircleBullet : MonoBehaviour
     private GameObject bulletPrefab; // ÅºÀÇ ÇÁ¸®ÆÕ
     
 
-    private EnemyBullet enemyBullet;
+    private LBullet Bullet;
 
     private void Start()
     {
@@ -38,10 +38,10 @@ public class CircleBullet : MonoBehaviour
             GameObject bullet = PoolManager.Instance.Spawn(bulletPrefab.gameObject.name);
             bullet.transform.position = transform.position;
             bullet.transform.rotation = Quaternion.identity;
-            enemyBullet = bullet.GetComponent<EnemyBullet>();
+            Bullet = bullet.GetComponent<LBullet>();
             bullet.transform.position += direction;
 
-            enemyBullet.Direction = direction;
+            Bullet.Direction = direction;
         }
     }
 }
