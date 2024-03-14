@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/HMScene/3D/UIScene.unity
+    guid: 14a8536ecd2d5474fa4eda147aa29784
+  - enabled: 1
+    path: Assets/Scenes/HMScene/3D/PlayerScene.unity
+    guid: b13a9593e92c4e244b5f2b86c9daad0d
+  - enabled: 1
+    path: Assets/Scenes/HMScene/3D/LoadingScene.unity
+    guid: af24bf81439afe747998c9156c12e4d8
+  - enabled: 1
+    path: Assets/Scenes/HMScene/3D/TitleScene.unity
+    guid: 5e7bb1626db56da449cac79d5bc68f12
+  - enabled: 1
+    path: Assets/Scenes/HMScene/3D/LoadingScene2.unity
+    guid: ba224f675cbdb6845a952887abfee315
+  - enabled: 1
+    path: Assets/Scenes/HMScene/3D/ScoreScene.unity
+    guid: 23596139ea8673045826fad04e79630a
+  - enabled: 1
+    path: Assets/Scenes/HMScene/3D/LoadingScene3.unity
+    guid: 18dc7b4ba8c39f54b9e6564c0828212a
   m_configObjects: {}
