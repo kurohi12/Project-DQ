@@ -1,0 +1,435 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8864092145168517555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6848554519710178786}
+  - component: {fileID: 863012856410627395}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6848554519710178786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864092145168517555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.444446, y: -4.280602, z: -2.817879}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863012856410627395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864092145168517555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7496345c50d77948ad77db43d0ecd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patterns:
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 3
+    CreateDelay: 0.5
+    SpawnCount: 5
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    wayPoints:
+    - way:
+      - {x: 10, y: 4, z: 0}
+      - {x: 0, y: 11, z: 0}
+      - {x: 0, y: -6, z: 0}
+      - {x: 14, y: -2, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 6
+    CreateDelay: 0.5
+    SpawnCount: 8
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    wayPoints:
+    - way:
+      - {x: 10, y: -4, z: 0}
+      - {x: 0, y: -11, z: 0}
+      - {x: 0, y: 6, z: 0}
+      - {x: 14, y: 2, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 15
+    CreateDelay: 0.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 0.5, z: 0}
+      - {x: -2, y: -4, z: 0}
+      - {x: 0.25, y: 5, z: 0}
+      - {x: 0.25, y: 11, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 15
+    CreateDelay: 0.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: -0.5, z: 0}
+      - {x: -2, y: 4, z: 0}
+      - {x: 0.25, y: -5, z: 0}
+      - {x: 0.25, y: -11, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 25
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 3, z: 0}
+      - {x: 5, y: 3, z: 0}
+    - way:
+      - {x: 5, y: 3, z: 0}
+      - {x: 4, y: 1, z: 0}
+      - {x: 8, y: 1, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 29
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 2, z: 0}
+      - {x: 5, y: 2, z: 0}
+    - way:
+      - {x: 5, y: 2, z: 0}
+      - {x: 4, y: 0, z: 0}
+      - {x: 8, y: 0, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 33
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: -2, z: 0}
+      - {x: 5, y: -2, z: 0}
+    - way:
+      - {x: 5, y: -2, z: 0}
+      - {x: 4, y: 0, z: 0}
+      - {x: 8, y: 0, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 36
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 1.5, z: 0}
+      - {x: 5, y: 1.5, z: 0}
+    - way:
+      - {x: 5, y: 1.5, z: 0}
+      - {x: 4, y: -1.5, z: 0}
+      - {x: 8, y: -1.5, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 39
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: -4, z: 0}
+      - {x: 5, y: -4, z: 0}
+    - way:
+      - {x: 5, y: -4, z: 0}
+      - {x: 4, y: -2, z: 0}
+      - {x: 8, y: -2, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 42
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 4, z: 0}
+      - {x: 5, y: 4, z: 0}
+    - way:
+      - {x: 5, y: 4, z: 0}
+      - {x: 4, y: 2, z: 0}
+      - {x: 8, y: 2, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 44
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 3.5, z: 0}
+      - {x: 5, y: 3.5, z: 0}
+    - way:
+      - {x: 5, y: 3.5, z: 0}
+      - {x: 4, y: 1.5, z: 0}
+      - {x: 8, y: 1.5, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 46
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 0.6, z: 0}
+      - {x: 5, y: 0.6, z: 0}
+    - way:
+      - {x: 5, y: 0.6, z: 0}
+      - {x: 4, y: 2.6, z: 0}
+      - {x: 8, y: 2.6, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 48
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 0.6, z: 0}
+      - {x: 5, y: 0.6, z: 0}
+    - way:
+      - {x: 5, y: 0.6, z: 0}
+      - {x: 4, y: -1.4, z: 0}
+      - {x: 8, y: -1.4, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 49
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 2.8, z: 0}
+      - {x: 5, y: 2.8, z: 0}
+    - way:
+      - {x: 5, y: 2.8, z: 0}
+      - {x: 4, y: 0.8, z: 0}
+      - {x: 8, y: 0.8, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 50
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: -1.4, z: 0}
+      - {x: 5, y: -1.4, z: 0}
+    - way:
+      - {x: 5, y: -1.4, z: 0}
+      - {x: 4, y: 0.6, z: 0}
+      - {x: 8, y: 0.6, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 55
+    CreateDelay: 0.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 3, z: 0}
+      - {x: -2, y: 0, z: 0}
+      - {x: 8, y: -3, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 55
+    CreateDelay: 0.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 4, z: 0}
+      - {x: -2, y: 0, z: 0}
+      - {x: 8, y: -2, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 62
+    CreateDelay: 0.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: -2, z: 0}
+      - {x: -2, y: 0, z: 0}
+      - {x: 8, y: 4, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 62
+    CreateDelay: 0.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: -3, z: 0}
+      - {x: -2, y: 0, z: 0}
+      - {x: 8, y: 3, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: 92c971bfcf7bf364399626e16cd26968, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 72
+    CreateDelay: 2.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 5, y: 6, z: 0}
+      - {x: 5, y: 2, z: 0}
+    - way:
+      - {x: 5, y: 2, z: 0}
+      - {x: 5, y: -6, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 72
+    CreateDelay: 2.5
+    SpawnCount: 10
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    - {fileID: 8482135242665835995, guid: 39b6c6c985cc0de43b0a5be0347a3a20, type: 3}
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 6, y: -6, z: 0}
+      - {x: 6, y: -2, z: 0}
+    - way:
+      - {x: 6, y: -2, z: 0}
+      - {x: 6, y: 6, z: 0}
+    SpawnObject: {fileID: 4571690454786834563, guid: ac9ddba48fa7ed148bd206209156ab86, type: 3}
+  - SpawnPosition: {fileID: 0}
+    SpawnTime: 90
+    CreateDelay: 0
+    SpawnCount: 1
+    Item:
+    - {fileID: 8382637938194826145, guid: e8e7042065fb7e04d830457b5282c65d, type: 3}
+    wayPoints:
+    - way:
+      - {x: 8, y: 0, z: 0}
+      - {x: 4, y: 0, z: 0}
+    SpawnObject: {fileID: 8021547634851429313, guid: fa25c6c8b77394544beadee68a05b9cc, type: 3}
+  nowLevel: 0
