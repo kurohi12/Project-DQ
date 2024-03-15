@@ -45,13 +45,13 @@ public class E_LevelManager : MonoBehaviour
             GameObject enemy = PoolManager.Instance.Spawn(data[level]["Enemy"].ToString());
             enemyComponent = enemy.GetComponent<FSMEnemy>();
             WayPoints wayPoint = new WayPoints();
-            enemyComponent.Speed = float.Parse(data[level]["Speed"].ToString());
-            enemyComponent.Hp = float.Parse(data[level]["Hp"].ToString());
-            for (int i = 0; i < int.Parse(data[level]["wayPointCnt"].ToString()); i++)
+            enemyComponent.Speed = float.Parse(data[0]["Speed"].ToString());
+            enemyComponent.Hp = float.Parse(data[0]["Hp"].ToString());
+            for (int i = 0; i < int.Parse(data[0]["wayPointCnt"].ToString()); i++)
             {
                 string x = (E_Way.x1 + (2*i)).ToString();
                 string y = (E_Way.y1 + (2*i)).ToString();
-                wayPoint.way[i] = new Vector3(float.Parse(data[level][x].ToString()), float.Parse(data[level][y].ToString()), 0);
+                wayPoint.way[i] = new Vector3(float.Parse(data[0][x].ToString()), float.Parse(data[0][y].ToString()), 0);
             }
             enemyComponent.wayPoints.Add(wayPoint);
             enemy.transform.position = spawnPoint.position;

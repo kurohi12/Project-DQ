@@ -22,4 +22,21 @@ public class E_Enemy : MonoBehaviour
     public float Hp = 10; //Ã¼·Â
     [SerializeField]
     public List<WayPoints> wayPoints = new List<WayPoints>(); //º£Áö¾î °î¼± ÁÂÇ¥
+
+    
+    private void Start()
+    {
+        List<Dictionary<string, object>> data = CSVReader.Read("Test");
+
+        WayPoints wayPoint = new WayPoints();
+        Speed = float.Parse(data[0]["Speed"].ToString());
+        Hp = float.Parse(data[0]["Hp"].ToString());
+        for (int i = 0; i < int.Parse(data[0]["wayPointCnt"].ToString()); i++)
+        {
+            string x = (E_Way.x1 + i).ToString();
+            string y = (E_Way.y1 + i).ToString();
+            wayPoint.way[i] = new Vector3(float.Parse(data[0][x].ToString()), float.Parse(data[0][y].ToString()), 0);
+        }
+        wayPoints.Add(wayPoint);
+    }
 }
