@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // 유니티 Scene
 
 public enum States
 {
@@ -47,6 +48,11 @@ public class player : MonoBehaviour
     {
         Move();     
         bool currentShiftState = Input.GetButton("leftShift");
+        if (Input.GetKeyDown(KeyCode.Space)) // 임시
+        {
+            LoadManager.Instance.sceneNum = 5;
+            SceneManager.LoadScene("LoadingScene3");
+        }
         if (Input.GetKey(KeyCode.Z))
         {
             if (curShotDelay >= maxShotDelay)// 현재 샷 딜레이가 본인이 설정한 맥스 샷 딜레이를 넘지 않았다면 아직 장전이 안된것이기에 반환시킴

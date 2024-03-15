@@ -32,7 +32,8 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 break;
             case ButtonType.TypeOne:
                 PlayerManager.Instance.playerType = States.PlayerOne;
-                SceneManager.LoadScene("LoadingScene");
+                SceneManager.LoadScene("LoadingScene3");
+                LoadManager.Instance.sceneNum = 0;
                 break;
             case ButtonType.TypeTwo:
                 PlayerManager.Instance.playerType = States.PlayerTwo;

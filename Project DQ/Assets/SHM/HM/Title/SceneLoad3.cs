@@ -9,6 +9,8 @@ public class SceneLoad3 : MonoBehaviour
     public Slider progressbar;
     public Text loadtext;
 
+    public int num;
+
     private void Start()
     {
         StartCoroutine(LoadScene());
@@ -17,7 +19,9 @@ public class SceneLoad3 : MonoBehaviour
     IEnumerator LoadScene()
     {
         yield return null;
-        AsyncOperation operation = SceneManager.LoadSceneAsync("TitleScene");
+        num = LoadManager.Instance.sceneNum;
+        //AsyncOperation operation = SceneManager.LoadSceneAsync("TitleScene");
+        AsyncOperation operation = SceneManager.LoadSceneAsync(num);
         operation.allowSceneActivation = false;
 
         while (!operation.isDone)
